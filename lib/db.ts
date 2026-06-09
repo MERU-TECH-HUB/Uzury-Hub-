@@ -310,3 +310,30 @@ export async function bulkInsertStakeholders(rows: StakeholderInsert[]) {
   if (error) throw error;
   return data as Stakeholder[];
 }
+
+export async function bulkInsertContacts(rows: ContactInsert[]) {
+  const { data, error } = await supabase
+    .from('contacts')
+    .insert(rows)
+    .select();
+  if (error) throw error;
+  return data as Contact[];
+}
+
+export async function bulkInsertEngagements(rows: EngagementInsert[]) {
+  const { data, error } = await supabase
+    .from('engagements')
+    .insert(rows)
+    .select();
+  if (error) throw error;
+  return data as Engagement[];
+}
+
+export async function bulkInsertOpportunities(rows: OpportunityInsert[]) {
+  const { data, error } = await supabase
+    .from('opportunities')
+    .insert(rows)
+    .select();
+  if (error) throw error;
+  return data as Opportunity[];
+}

@@ -1,6 +1,6 @@
 'use client';
 
-import { use, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { notFound, useRouter } from 'next/navigation';
 import {
@@ -19,8 +19,8 @@ import type { Stakeholder, Contact, Engagement, Opportunity, FollowUp } from '@/
 
 const TABS = ['Overview', 'Contacts', 'Engagements', 'Opportunities', 'Follow-Ups'];
 
-export default function StakeholderDetailPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = use(params);
+export default function StakeholderDetailPage({ params }: { params: { id: string } }) {
+  const { id } = params;
   const router = useRouter();
   
   const [stakeholder, setStakeholder] = useState<Stakeholder | null>(null);
@@ -253,7 +253,9 @@ export default function StakeholderDetailPage({ params }: { params: Promise<{ id
       {tab === 'Contacts' && (
         <div className="space-y-4">
           <div className="flex justify-end">
-            <Button size="sm"><Plus className="h-4 w-4" /> Add Contact</Button>
+            <Link href={`/contacts/new?stakeholder=${id}`}>
+              <Button size="sm"><Plus className="h-4 w-4" /> Add Contact</Button>
+            </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
             {contacts.map((c) => (

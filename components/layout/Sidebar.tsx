@@ -56,8 +56,8 @@ export default function Sidebar() {
 
       {/* Logo / Brand */}
       <div className={cn('flex items-center gap-3 px-4 py-5 border-b border-white/[0.06]', collapsed && 'justify-center px-0')}>
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white p-1 shadow-[0_0_15px_rgba(14,165,233,0.3)] border border-white/20">
-          <img src="/logo.jpg" alt="Uzury Empowerment Hub" className="h-full w-full object-contain" />
+        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-white p-1.5 shadow-[0_0_15px_rgba(14,165,233,0.3)] border border-white/20">
+          <img src="/logo.jpg" alt="Uzury Empowerment Hub" className="h-full w-full object-contain mix-blend-multiply" />
         </div>
         {!collapsed && (
           <div>

@@ -43,8 +43,8 @@ export default function LoginPage() {
 
       <div className="w-full max-w-md relative z-10">
         <div className="text-center mb-8">
-          <div className="h-20 w-20 mx-auto rounded-2xl bg-white flex items-center justify-center mb-4 shadow-xl shadow-sky-500/20 p-2 border border-white/20">
-            <img src="/logo.jpg" alt="Uzury Empowerment Hub" className="h-full w-full object-contain" />
+          <div className="h-32 w-32 mx-auto rounded-3xl bg-white flex items-center justify-center mb-6 shadow-xl shadow-sky-500/20 p-2 border border-white/20">
+            <img src="/logo.jpg" alt="Uzury Empowerment Hub" className="h-full w-full object-contain mix-blend-multiply" />
           </div>
           <h1 className="text-3xl font-bold text-white tracking-tight">Uzury Platform</h1>
           <p className="text-slate-400 mt-2">Admin Login Portal</p>

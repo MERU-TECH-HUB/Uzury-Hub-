@@ -34,22 +34,43 @@ const BOTTOM_NAV_ITEMS = [
 
 export default function Sidebar() {
   const pathname = usePathname();
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true); // Start collapsed on mobile
 
   return (
-    <aside
-      className={cn(
-        'h-screen flex flex-col bg-[#0B1121] border-r border-white/[0.06] transition-all duration-300 relative',
-        collapsed ? 'w-[72px]' : 'w-64'
+    <>
+      {/* Mobile overlay */}
+      {!collapsed && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-40 md:hidden backdrop-blur-sm" 
+          onClick={() => setCollapsed(true)} 
+        />
       )}
-    >
+
+      {/* Mobile Open Button */}
+      <button 
+        onClick={() => setCollapsed(false)}
+        className={cn(
+          "fixed top-3 left-4 z-40 p-1.5 rounded-md bg-white/5 border border-white/10 text-slate-300 hover:text-white transition-colors md:hidden",
+          !collapsed && "hidden"
+        )}
+      >
+        <Menu className="h-5 w-5" />
+      </button>
+
+      <aside
+        className={cn(
+          'h-screen flex flex-col bg-[#0B1121] border-r border-white/[0.06] transition-all duration-300 z-50',
+          'fixed inset-y-0 left-0 md:relative', // Fixed on mobile, relative on desktop
+          collapsed ? '-translate-x-full md:translate-x-0 md:w-[72px]' : 'w-64 translate-x-0'
+        )}
+      >
       {/* Decorative background glow */}
       <div className="absolute top-0 left-0 w-full h-48 bg-sky-500/5 blur-[50px] pointer-events-none" />
 
-      {/* Collapse toggle */}
+      {/* Collapse toggle (Desktop only) */}
       <button 
         onClick={() => setCollapsed(!collapsed)}
-        className="absolute -right-3 top-6 bg-[#1E293B] border border-white/10 rounded-full p-1 text-slate-400 hover:text-white hover:bg-slate-700 transition-colors z-50"
+        className="hidden md:block absolute -right-3 top-6 bg-[#1E293B] border border-white/10 rounded-full p-1 text-slate-400 hover:text-white hover:bg-slate-700 transition-colors z-50"
       >
         <Menu className="h-4 w-4" />
       </button>
@@ -121,5 +142,6 @@ export default function Sidebar() {
         })}
       </div>
     </aside>
+    </>
   );
 }

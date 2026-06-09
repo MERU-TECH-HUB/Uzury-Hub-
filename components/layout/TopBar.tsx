@@ -41,7 +41,7 @@ export default function TopBar() {
   const page = PAGE_TITLES[pageKey] ?? PAGE_TITLES['/'];
 
   return (
-    <header className="header-blur sticky top-0 z-30 flex h-14 items-center gap-4 px-6">
+    <header className="header-blur sticky top-0 z-30 flex h-14 items-center gap-4 pl-14 md:pl-6 pr-6">
       {/* Page title */}
       <div className="flex-1 min-w-0">
         <h1 className="text-base font-semibold text-white truncate">{page.title}</h1>
